@@ -1,9 +1,10 @@
-import { Box, Typography, IconButton, Stack, Container } from '@mui/material';
-import { GitHub, LinkedIn, Email } from '@mui/icons-material';
+import { Box, Typography, IconButton, Stack, Container } from '@mui/material'
+import { GitHub, LinkedIn, Email } from '@mui/icons-material'
 
 const Hero = () => {
   return (
     <Box
+      id="hero"
       sx={{
         minHeight: '100vh',
         display: 'flex',
@@ -15,17 +16,20 @@ const Hero = () => {
       <Container
         maxWidth="md"
         sx={{
-            flex: 4.5,
-            py: { xs: 8, md: 12 },
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            zIndex: 2,
+          flex: 4.5,
+          py: { xs: 8, md: 12 },
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          zIndex: 2,
         }}
-        >
+      >
         <Typography
           variant="h5"
-          sx={{ color: 'text.secondary', fontSize: { xs: '1.25rem', md: '1.5rem' } }}
+          sx={{
+            color: 'text.secondary',
+            fontSize: { xs: '1.25rem', md: '1.5rem' },
+          }}
         >
           Hi, I am
         </Typography>
@@ -44,15 +48,21 @@ const Hero = () => {
 
         <Typography
           variant="h6"
-          sx={{  fontSize: { xs: '1rem', md: '1.25rem' }, color: 'text.secondary' }}
+          sx={{
+            fontSize: { xs: '1rem', md: '1.25rem' },
+            color: 'text.secondary',
+          }}
         >
           Senior Frontend Engineer
         </Typography>
         <Typography
           variant="h6"
-          sx={{  fontSize: { xs: '1rem', md: '1.25rem' }, color: 'text.secondary' }}
+          sx={{
+            fontSize: { xs: '1rem', md: '1.25rem' },
+            color: 'text.secondary',
+          }}
         >
-           React · TypeScript · GraphQL · AI-Aware UX
+          React · TypeScript · GraphQL · AI-Aware UX
         </Typography>
 
         <Stack direction="row" spacing={2} mt={4}>
@@ -62,7 +72,10 @@ const Hero = () => {
           <IconButton href="https://github.com/clintjose08" target="_blank">
             <GitHub fontSize="medium" />
           </IconButton>
-          <IconButton href="https://linkedin.com/in/your-linkedin" target="_blank">
+          <IconButton
+            href="https://linkedin.com/in/your-linkedin"
+            target="_blank"
+          >
             <LinkedIn fontSize="medium" />
           </IconButton>
         </Stack>
@@ -70,17 +83,17 @@ const Hero = () => {
 
       {/* Right Side (Image) */}
       <Box
-          sx={{
-            flex: 5.5,
-            bgcolor: '#000',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-end',
-            clipPath: {
-              xs: 'none',
-              md: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)',
-            },
-          }}
+        sx={{
+          flex: 5.5,
+          bgcolor: '#000',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+          clipPath: {
+            xs: 'none',
+            md: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)',
+          },
+        }}
       >
         <Box
           component="img"
@@ -94,7 +107,7 @@ const Hero = () => {
         />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

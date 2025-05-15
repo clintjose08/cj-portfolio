@@ -1,21 +1,117 @@
-function About() {
-    return (
-      <section id="about" className="py-20 px-6 bg-gray-50 text-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">About Me</h2>
-          <p className="text-lg leading-relaxed">
-            I'm a Senior Frontend Engineer with 10+ years of experience delivering high-performance, scalable web apps. 
-            I specialize in building robust user interfaces using React, TypeScript, GraphQL, and modern tooling.
-          </p>
-          <p className="text-lg leading-relaxed mt-4">
-            I've led frontend architecture for large-scale platforms like RMS2 — an AI-powered seat-level pricing system 
-            that optimized over 100,000 seats and helped grow revenue by 5%. I enjoy collaborating with cross-functional teams, 
-            mentoring engineers, and shipping production-grade features that make a business impact.
-          </p>
-        </div>
-      </section>
-    );
-  }
-  
-  export default About;
-  
+import { Box, Typography, Container } from '@mui/material'
+import Grid from '@mui/material/Grid'
+import AccountTreeIcon from '@mui/icons-material/AccountTree'
+import SmartToyIcon from '@mui/icons-material/SmartToy'
+import GroupsIcon from '@mui/icons-material/Groups'
+import SyncAltIcon from '@mui/icons-material/SyncAlt'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+
+const highlights = [
+  {
+    title: 'Frontend Architecture',
+    description:
+      'Designed and led front-end architecture for large-scale React + TypeScript apps, focusing on performance, scalability, and maintainability.',
+    icon: <AccountTreeIcon fontSize="large" />,
+  },
+  {
+    title: 'AI-powered UX',
+    description:
+      'Integrated intelligent pricing models into real-time interfaces, enabling smarter decision-making through AI-powered workflows.',
+    icon: <SmartToyIcon fontSize="large" />,
+  },
+  {
+    title: 'Cross-functional Delivery',
+    description:
+      'Collaborated with product, design, backend, and data science teams to deliver impactful, user-centered features efficiently.',
+    icon: <GroupsIcon fontSize="large" />,
+  },
+  {
+    title: 'Real-time Interactions',
+    description:
+      'Built seamless real-time interfaces using GraphQL and WebSockets, supporting responsive, data-driven seat-level pricing UX.',
+    icon: <SyncAltIcon fontSize="large" />,
+  },
+  {
+    title: 'Mentorship & Ownership',
+    description:
+      'Mentored engineers, led architectural reviews, and took ownership of core modules from planning to deployment.',
+    icon: <EmojiPeopleIcon fontSize="large" />,
+  },
+]
+
+const About = () => {
+  return (
+    <Box
+      id="about"
+      sx={{
+        py: { xs: 8, md: 12 },
+        bgcolor: 'background.default',
+        px: 2,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Typography
+          variant="h4"
+          component="h2"
+          gutterBottom
+          sx={{
+            fontWeight: 700,
+            textAlign: 'center',
+            mb: 6,
+          }}
+        >
+          About Me
+        </Typography>
+
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          maxWidth="md"
+          mx="auto"
+          mb={6}
+          textAlign="center"
+        >
+          I’m a Senior Frontend Engineer with 10+ years of experience building
+          complex, high-performance applications. I lead projects with a focus
+          on architecture, real-time UX, and seamless team collaboration —
+          always aiming for scalable, impactful solutions.
+        </Typography>
+
+        <Grid container spacing={4} justifyContent="center">
+          {highlights.map((item, idx) => (
+            <Grid
+              item
+              key={idx}
+              xs={12}
+              sm={6}
+              md={5}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Box
+                display="flex"
+                alignItems="flex-start"
+                gap={2}
+                maxWidth="360px"
+              >
+                <Box color="primary.main">{item.icon}</Box>
+                <Box>
+                  <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                    {item.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {item.description}
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  )
+}
+
+export default About

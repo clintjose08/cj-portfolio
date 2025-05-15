@@ -1,0 +1,155 @@
+import { useState } from 'react'
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Link as MuiLink,
+  CircularProgress,
+} from '@mui/material'
+import { GitHub, LinkedIn, Email, Download } from '@mui/icons-material'
+
+const Contact = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [loading, setLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const res = await fetch('https://formspree.io/f/mldbayez', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setSuccessMessage('Thanks! Your message has been sent.')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setSuccessMessage('Something went wrong. Please try again later.')
+      }
+    } catch {
+      setSuccessMessage('Error connecting to server.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <Box id="contact" sx={{ py: 12, bgcolor: 'background.paper' }}>
+      <Container maxWidth="sm">
+        <Typography variant="h4" fontWeight={700} textAlign="center" mb={6}>
+          Contact Me
+        </Typography>
+
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
+        >
+          <TextField
+            label="Your Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+          <TextField
+            label="Your Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+          <TextField
+            label="Your Message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            multiline
+            rows={4}
+            fullWidth
+            required
+          />
+          <Button
+            type="submit"
+            disabled={loading}
+            variant="contained"
+            sx={{
+              bgcolor: 'black',
+              color: 'white',
+              fontWeight: 700,
+              textTransform: 'none',
+              borderRadius: '999px',
+              px: 3,
+              py: 1,
+              alignSelf: 'center',
+              '&:hover': { bgcolor: 'grey.800' },
+            }}
+          >
+            {loading ? (
+              <CircularProgress size={20} sx={{ color: 'white' }} />
+            ) : (
+              'Send Message'
+            )}
+          </Button>
+
+          {successMessage && (
+            <Typography
+              variant="body2"
+              textAlign="center"
+              mt={2}
+              color="text.secondary"
+            >
+              {successMessage}
+            </Typography>
+          )}
+        </form>
+
+        <Box mt={8} textAlign="center">
+          <Typography variant="body1" gutterBottom>
+            Or reach me directly:
+          </Typography>
+          <Box display="flex" justifyContent="center" gap={3}>
+            <MuiLink
+              href="mailto:clint@example.com"
+              target="_blank"
+              rel="noopener"
+            >
+              <Email />
+            </MuiLink>
+            <MuiLink
+              href="https://linkedin.com/in/clintjose08"
+              target="_blank"
+              rel="noopener"
+            >
+              <LinkedIn />
+            </MuiLink>
+            <MuiLink
+              href="https://github.com/clintjose08"
+              target="_blank"
+              rel="noopener"
+            >
+              <GitHub />
+            </MuiLink>
+            <MuiLink href="/resume.pdf" target="_blank" rel="noopener">
+              <Download />
+            </MuiLink>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
+  )
+}
+
+export default Contact
