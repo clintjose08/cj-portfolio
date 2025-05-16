@@ -1,4 +1,5 @@
 import { Box, Typography, Container, Grid, Stack } from '@mui/material'
+import SectionTitle from '../components/SectionTitle'
 
 const skills = [
   {
@@ -7,7 +8,7 @@ const skills = [
       { name: 'React.js', slug: 'react' },
       { name: 'TypeScript', slug: 'typescript' },
       { name: 'Redux', slug: 'redux' },
-      { name: 'React Hooks', slug: 'react' }, // same icon
+      { name: 'React Hooks', slug: 'react' },
       { name: 'Material UI', slug: 'materialui' },
       { name: 'Vite', slug: 'vite' },
       { name: 'CSS3', slug: 'css' },
@@ -50,32 +51,20 @@ const Skills = () => {
       id="skills"
       sx={{
         py: { xs: 8, md: 12 },
-        background: 'linear-gradient(to bottom, #f4f6fa, #ffffff)',
         px: 2,
       }}
     >
-      <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
-        <Box
-          sx={{
-            display: 'inline-block',
-            border: '2px solid',
-            borderColor: 'text.primary',
-            px: 4,
-            py: 1,
-            mb: 6,
-          }}
-        >
-          <Typography variant="h5" fontWeight={700} letterSpacing={2}>
-            SKILLS
-          </Typography>
-        </Box>
+      <Container maxWidth="lg">
+        <SectionTitle title="Skills" />
 
         {skills.map((group, idx) => (
           <Box key={idx} sx={{ mb: 6 }}>
             <Typography
-              variant="h6"
+              variant="subtitle1"
               fontWeight={700}
-              sx={{ mb: 3, textTransform: 'uppercase' }}
+              textAlign="center"
+              gutterBottom
+              sx={{ textTransform: 'uppercase' }}
             >
               {group.category}
             </Typography>
@@ -92,12 +81,7 @@ const Skills = () => {
                     />
                     <Typography
                       variant="body2"
-                      color="text.primary"
-                      sx={{
-                        fontWeight: 500,
-                        fontSize: '0.85rem',
-                        textAlign: 'center',
-                      }}
+                      sx={{ fontWeight: 500, textAlign: 'center' }}
                     >
                       {item.name}
                     </Typography>

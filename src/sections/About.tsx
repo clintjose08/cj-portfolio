@@ -1,10 +1,10 @@
-import { Box, Typography, Container } from '@mui/material'
-import Grid from '@mui/material/Grid'
+import { Box, Typography, Container, Grid } from '@mui/material'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import SmartToyIcon from '@mui/icons-material/SmartToy'
 import GroupsIcon from '@mui/icons-material/Groups'
 import SyncAltIcon from '@mui/icons-material/SyncAlt'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+import SectionTitle from '../components/SectionTitle'
 
 const highlights = [
   {
@@ -45,31 +45,19 @@ const About = () => {
       id="about"
       sx={{
         py: { xs: 8, md: 12 },
-        bgcolor: 'background.default',
         px: 2,
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          sx={{
-            fontWeight: 700,
-            textAlign: 'center',
-            mb: 6,
-          }}
-        >
-          About Me
-        </Typography>
+        <SectionTitle title="About Me" />
 
         <Typography
           variant="body1"
           color="text.secondary"
           maxWidth="md"
           mx="auto"
-          mb={6}
           textAlign="center"
+          mb={8}
         >
           I’m a Senior Frontend Engineer with 10+ years of experience building
           complex, high-performance applications. I lead projects with a focus
@@ -77,7 +65,7 @@ const About = () => {
           always aiming for scalable, impactful solutions.
         </Typography>
 
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={6} justifyContent="center">
           {highlights.map((item, idx) => (
             <Grid
               item
@@ -96,7 +84,9 @@ const About = () => {
                 gap={2}
                 maxWidth="360px"
               >
-                <Box color="primary.main">{item.icon}</Box>
+                <Box mt="4px" color="#a8a6a4">
+                  {item.icon}
+                </Box>
                 <Box>
                   <Typography variant="subtitle1" fontWeight={600} gutterBottom>
                     {item.title}

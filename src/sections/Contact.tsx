@@ -7,8 +7,10 @@ import {
   Typography,
   Link as MuiLink,
   CircularProgress,
+  Stack,
 } from '@mui/material'
 import { GitHub, LinkedIn, Email, Download } from '@mui/icons-material'
+import SectionTitle from '../components/SectionTitle'
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -44,15 +46,14 @@ const Contact = () => {
   }
 
   return (
-    <Box id="contact" sx={{ py: 12, bgcolor: 'background.paper' }}>
+    <Box id="contact" sx={{ py: 12 }}>
       <Container maxWidth="sm">
-        <Typography variant="h4" fontWeight={700} textAlign="center" mb={6}>
-          Contact Me
-        </Typography>
+        <SectionTitle title="Contact Me" />
 
-        <form
+        <Box
+          component="form"
           onSubmit={handleSubmit}
-          style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
+          sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
         >
           <TextField
             label="Your Name"
@@ -81,6 +82,7 @@ const Contact = () => {
             fullWidth
             required
           />
+
           <Button
             type="submit"
             disabled={loading}
@@ -91,8 +93,8 @@ const Contact = () => {
               fontWeight: 700,
               textTransform: 'none',
               borderRadius: '999px',
-              px: 3,
-              py: 1,
+              px: 4,
+              py: 1.25,
               alignSelf: 'center',
               '&:hover': { bgcolor: 'grey.800' },
             }}
@@ -108,44 +110,41 @@ const Contact = () => {
             <Typography
               variant="body2"
               textAlign="center"
-              mt={2}
+              mt={1}
               color="text.secondary"
             >
               {successMessage}
             </Typography>
           )}
-        </form>
+        </Box>
 
         <Box mt={8} textAlign="center">
           <Typography variant="body1" gutterBottom>
             Or reach me directly:
           </Typography>
-          <Box display="flex" justifyContent="center" gap={3}>
-            <MuiLink
-              href="mailto:clint@example.com"
-              target="_blank"
-              rel="noopener"
-            >
-              <Email />
+
+          <Stack direction="row" justifyContent="center" spacing={3}>
+            <MuiLink href="mailto:clint@example.com" target="_blank">
+              <Email fontSize="medium" />
             </MuiLink>
             <MuiLink
               href="https://linkedin.com/in/clintjose08"
               target="_blank"
               rel="noopener"
             >
-              <LinkedIn />
+              <LinkedIn fontSize="medium" />
             </MuiLink>
             <MuiLink
               href="https://github.com/clintjose08"
               target="_blank"
               rel="noopener"
             >
-              <GitHub />
+              <GitHub fontSize="medium" />
             </MuiLink>
             <MuiLink href="/resume.pdf" target="_blank" rel="noopener">
-              <Download />
+              <Download fontSize="medium" />
             </MuiLink>
-          </Box>
+          </Stack>
         </Box>
       </Container>
     </Box>

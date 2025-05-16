@@ -6,17 +6,19 @@ const Summary = () => {
       sx={{
         bgcolor: 'grey.900',
         color: 'grey.100',
-        py: { xs: 3, md: 5 },
+        py: { xs: 6, md: 8 },
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Typography
-          variant="h5"
+          variant="h6"
           sx={{
             textTransform: 'uppercase',
-            letterSpacing: 2,
+            letterSpacing: 1.5,
             fontWeight: 700,
-            mb: 3,
+            mb: 2,
+            fontSize: { xs: '1rem', md: '1.125rem' },
+            color: 'primary.main',
           }}
         >
           Elevating Pricing Intelligence
@@ -25,9 +27,10 @@ const Summary = () => {
         <Typography
           variant="body1"
           sx={{
-            fontSize: '1rem',
+            fontSize: { xs: '0.95rem', md: '1.05rem' },
             lineHeight: 1.75,
-            mb: 4,
+            mb: 3,
+            maxWidth: { md: '75%' },
           }}
         >
           I led the front-end architecture and UX for RMS2, our AI-powered
@@ -50,10 +53,9 @@ const Summary = () => {
             fontWeight: 600,
             letterSpacing: 1,
             '&:hover': {
-              borderBottom: '2px solid',
               borderColor: 'primary.main',
               color: 'primary.main',
-              backgroundColor: 'transparent',
+              bgcolor: 'transparent',
             },
           }}
         >

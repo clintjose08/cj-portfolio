@@ -8,6 +8,7 @@ import {
   Divider,
   Button,
 } from '@mui/material'
+import SectionTitle from '../components/SectionTitle'
 
 const projects = [
   {
@@ -71,23 +72,9 @@ const Projects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 3)
 
   return (
-    <Box id="projects" sx={{ py: 12, bgcolor: 'background.default' }}>
+    <Box id="projects" sx={{ py: 12 }}>
       <Container maxWidth="lg">
-        <Box display="flex" justifyContent="center" mb={6}>
-          <Box
-            sx={{
-              border: '3px solid black',
-              px: 4,
-              py: 1,
-              textAlign: 'center',
-              letterSpacing: 3,
-            }}
-          >
-            <Typography variant="h6" fontWeight={700}>
-              PROJECTS
-            </Typography>
-          </Box>
-        </Box>
+        <SectionTitle title="Projects" />
 
         {displayedProjects.map((project, index) => {
           const isEven = index % 2 === 0
@@ -95,14 +82,16 @@ const Projects = () => {
 
           return (
             <Box key={index} mb={12}>
-              <Grid container spacing={4} alignItems="center">
-                <Grid
-                  item
-                  xs={12}
-                  md={5}
-                  order={{ xs: 1, md: isEven ? 1 : 3 }}
-                  sx={{ display: 'flex', justifyContent: 'center' }}
-                >
+              <Grid
+                container
+                spacing={4}
+                alignItems="center"
+                sx={{
+                  display: 'flex',
+                  justifyContent: isEven ? 'flex-start' : 'flex-end',
+                }}
+              >
+                <Grid item xs={12} md={5} order={{ xs: 1, md: isEven ? 1 : 3 }}>
                   <Box
                     component="img"
                     src={project.image}
@@ -146,7 +135,7 @@ const Projects = () => {
                     px: { xs: 2, md: 4 },
                   }}
                 >
-                  <Box sx={{ maxWidth: 460 }}>
+                  <Box sx={{ maxWidth: 480 }}>
                     <Typography variant="h6" fontWeight={600} gutterBottom>
                       {project.title}
                     </Typography>
@@ -187,9 +176,20 @@ const Projects = () => {
         })}
         <Box display="flex" justifyContent="center">
           <Button
-            variant="outlined"
+            variant="contained"
             onClick={() => setShowAll(prev => !prev)}
-            sx={{ textTransform: 'uppercase', letterSpacing: 1 }}
+            sx={{
+              bgcolor: 'black',
+              color: 'white',
+              fontWeight: 700,
+              textTransform: 'none',
+              borderRadius: '999px',
+              px: 4,
+              py: 1.2,
+              '&:hover': {
+                bgcolor: 'grey.800',
+              },
+            }}
           >
             {showAll ? 'Show Less Projects' : 'View More Projects'}
           </Button>
